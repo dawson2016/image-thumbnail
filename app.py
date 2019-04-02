@@ -21,13 +21,9 @@ class MainHandler(tornado.web.RequestHandler):
         path = self.get_argument('url0')
         http = httpclient.AsyncHTTPClient()
         yield http.fetch(path,self.conv)
-class BHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.write('ok')
 def make_app():
     return tornado.web.Application([
-        (r"/", MainHandler),
-        (r"/ok", BHandler),
+        (r"/", MainHandler)
     ])
 if __name__ == "__main__":
     app = make_app()
